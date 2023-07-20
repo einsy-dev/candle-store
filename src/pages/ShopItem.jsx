@@ -1,14 +1,27 @@
 import { Container } from "react-bootstrap";
 import Carousel from "../components/Carousel";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import DescriptionItem from "../components/DescriptionItem";
 
 
 export default function ShopItem() {
   let { state } = useLocation();
-  console.log(state)
   return (
-    <Container>
+    <Container className="my-4">
+      <nav aria-label="breadcrumb" className="mx-4">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+          <li className="breadcrumb-item active" aria-current="page">{state.title}</li>
+        </ol>
+      </nav>
+
       <Carousel images={state.image.high} />
+
+      <DescriptionItem
+        title={state.title}
+        price={state.price}
+        description={state.discription}
+        specs={state.specs} />
     </Container>
   )
 }

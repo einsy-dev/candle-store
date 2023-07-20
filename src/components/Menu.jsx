@@ -16,15 +16,10 @@ export default function Menu() {
                     <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
 
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
+                            <a className="nav-link" href="#">Свечи</a>
                         </li>
-                        <li className="nav-item dropdown">
-                        </li>
+
                     </ul>
-                    <form className="d-flex mt-3" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </Container>

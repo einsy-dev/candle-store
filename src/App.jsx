@@ -10,11 +10,11 @@ import Footer from './components/Footer';
 export default function App() {
     return (
         <BrowserRouter>
-            <NavBar />
-
-            <AppRouter />
-
-            <Footer />
+            <div style={{ minHeight: "100vh" }}>
+                <NavBar />
+                <AppRouter />
+                <Footer />
+            </div>
         </BrowserRouter >
     )
 }

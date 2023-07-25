@@ -1,9 +1,10 @@
 import { ReactComponent as BurgerIcon } from '../images/icons8-menu.svg'
 import { Container } from 'react-bootstrap';
 
+
 export default function Menu() {
     return (
-        <Container className=' w-auto ms-5 p-0'>
+        <Container className='w-auto ms-4 p-0'>
             <button className="btn btn-light p-0 px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <BurgerIcon width={38} height={38} />
             </button>
@@ -21,8 +22,8 @@ export default function Menu() {
 
                     </ul>
                 </div>
+
             </div>
         </Container>
-
     )
 }

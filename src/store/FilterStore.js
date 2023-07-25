@@ -3,7 +3,7 @@ import { makeAutoObservable } from "mobx";
 class FilterStore {
     filter = 'All'
     constructor() {
-       makeAutoObservable
+       makeAutoObservable(this)
     }
 
     changeFilter = (filter) => {

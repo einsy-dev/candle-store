@@ -5,7 +5,6 @@ import { dataInfo } from './../data/info';
 import Pagination from '../components/Pagination';
 import FilterStore from '../store/FilterStore';
 import { observer } from 'mobx-react-lite';
-import { Container } from 'react-bootstrap';
 
 const Shop = observer(() => {
   const [isLoading, setLoading] = useState(true);
@@ -23,14 +22,14 @@ const Shop = observer(() => {
   }, [filter, page])
 
   return (
-    <Container className="d-flex flex-wrap justify-content-center" style={{ minHeight: '80vh' }}>
+    <>
       {isLoading ? <IsLoading className="m-auto" /> :
         <>
           <Card data={data} />
           <Pagination pageState={(page) => setPage(page)} limitPage={limit} activePage={page} />
         </>
       }
-    </Container>
+    </>
   );
 }
 )

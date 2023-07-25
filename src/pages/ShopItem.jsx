@@ -6,6 +6,7 @@ import DescriptionItem from "../components/DescriptionItem";
 
 export default function ShopItem() {
   let { state } = useLocation();
+  console.log(state)
   return (
     <Container className="my-4">
       <nav aria-label="breadcrumb" className="mx-4">

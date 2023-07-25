@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 
 export default function Carousel({ images }) {
     return (
-        <Container>
+        <Container className="p-0">
             <div id="carouselExampleDark" className="carousel carousel-dark slide">
                 <div className="carousel-indicators">
                     {images.map((image, index) => (
@@ -17,14 +17,14 @@ export default function Carousel({ images }) {
                         ></button>
                     ))}
                 </div>
-                <div className="carousel-inner ratio ratio-16x9">
+                <div className="carousel-inner rounded ratio ratio-16x9">
                     {images.map((image, index) => (
                         <div
                             className={`carousel-item ${index === 0 ? "active" : ""}`}
                             data-bs-interval={index === 0 ? "10000" : "2000"}
                             key={index}
                         >
-                            <img src={image} className="d-block w-100" alt={`Slide ${index + 1}`} />
+                            <img src={image} className=" d-block w-100" alt={`Slide ${index + 1}`} />
                         </div>
                     ))}
                 </div>

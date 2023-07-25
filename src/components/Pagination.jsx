@@ -1,4 +1,3 @@
-import { Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 export default function Pagination({ pageState, limitPage, activePage }) {
@@ -16,7 +15,7 @@ export default function Pagination({ pageState, limitPage, activePage }) {
   useEffect(() => {
     if (limitPage <= 5) {
       setResult(pages.slice(0, limitPage));
-    } else if (active === 1 || active === 2) {
+    } else if (active <= 2) {
       setResult(pages.slice(0, 5));
     } else if (active >= limitPage - 2) {
       setResult(pages.slice(limitPage - 5, limitPage));
@@ -26,8 +25,8 @@ export default function Pagination({ pageState, limitPage, activePage }) {
   }, [active, limitPage]);
 
   return (
-    <Container className="d-flex">
-      <nav className="m-auto">
+    <div className="mt-auto w-100 d-flex justify-content-center">
+      <nav>
         <ul className="pagination">
           <li className="page-item">
             <button className={active === 1 ? "page-link disabled" : "page-link"} onClick={() => handleClick(active - 1)}>
@@ -48,6 +47,6 @@ export default function Pagination({ pageState, limitPage, activePage }) {
           </li>
         </ul>
       </nav>
-    </Container>
+    </div>
   );
 }

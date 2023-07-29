@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Login from "../components/Login";
-import Register from "../components/Register";
+import Login from "../components/modal/Login";
+import Register from "../components/modal/Register";
 
 
 export default function Profile() {

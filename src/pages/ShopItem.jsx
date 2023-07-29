@@ -1,12 +1,12 @@
 import { Container } from "react-bootstrap";
-import Carousel from "../components/Carousel";
+import Carousel from "../components/shopitem/Carousel";
 import { useLocation, Link } from "react-router-dom";
-import DescriptionItem from "../components/DescriptionItem";
+import DescriptionItem from "../components/shopitem/DescriptionItem";
 
 
 export default function ShopItem() {
   let { state } = useLocation();
-  console.log(state)
+  
   return (
     <Container className="my-4">
       <nav aria-label="breadcrumb" className="mx-4">

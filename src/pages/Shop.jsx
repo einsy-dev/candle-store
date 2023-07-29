@@ -1,32 +1,38 @@
-import IsLoading from './IsLoading';
-import Card from '../components/Card';
-import { useEffect, useState } from 'react';
-import { dataInfo } from './../data/info';
-import Pagination from '../components/Pagination';
-import FilterStore from '../store/FilterStore';
+import IsLoading from '../components/shop/IsLoading';
+import { useEffect, useState, useContext } from 'react';
+import Pagination from '../components/shop/Pagination';
 import { observer } from 'mobx-react-lite';
+import { getAllCards } from '../http/cardAPI';
+import { Context } from './../main';
+import { NavLink } from 'react-router-dom';
 
 const Shop = observer(() => {
+
+  const { store } = useContext(Context);
   const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(JSON.parse(localStorage.getItem('page')) || 1);
-  const [limit, setLimit] = useState(5);
-  const filter = FilterStore.filter
 
   useEffect(() => {
-    const filteredData = dataInfo.filter(el => el.category === filter || filter === 'All');
-    const result = filteredData.slice((page - 1) * 8, page * 8);
-    setData(result);
-    setLimit(Math.ceil(filteredData.length / 8));
-    setLoading(false);
-  }, [filter, page])
+    getAllCards(store.filter, store.page).then(data => store.items(data)).finally(() => setLoading(false)).catch(err => console.log(err));
+  }, [store, store.page])
 
   return (
     <>
       {isLoading ? <IsLoading className="m-auto" /> :
         <>
-          <Card data={data} />
-          <Pagination pageState={(page) => setPage(page)} limitPage={limit} activePage={page} />
+          {store.data?.map((el, id) => (
+
+            <div className="card m-3" key={id} style={{ width: "18rem", height: "fit-content" }}>
+              <img src={el.image.medium[0]} className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">Card {el.title} Title</h5>
+                <p className="card-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+                <NavLink to={`/item/${el.id}`} state={el} key={id}>Go next</NavLink>
+              </div>
+            </div>
+          ))}
+          <Pagination limitPage={store.limitPage} activePage={store.page} />
         </>
       }
     </>

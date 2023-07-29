@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 export const $host = axios.create({
-    baseURL: import.meta.env.REACT_URL_API,
+    baseURL: 'http://localhost:5000',
 })
 
 export const $authHost = axios.create({
-    baseURL: import.meta.env.REACT_URL_API,
+    baseURL: 'http://localhost:5000',
     headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`
     }

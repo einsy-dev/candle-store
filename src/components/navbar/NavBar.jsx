@@ -3,14 +3,15 @@ import { ReactComponent as CartIcon } from '../../images/bag.svg'
 import { ReactComponent as WishListIcon } from '../../images/heart.svg'
 import { ReactComponent as TelegramIcon } from '../../images/icons8-telegram.svg'
 import { ReactComponent as PinterestIcon } from '../../images/icons8-pinterest.svg'
-
-
 import { Container } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import Menu from './Menu';
 import { observer } from 'mobx-react-lite';
+import { useContext } from 'react'
+import { Context } from './../../main';
 
 const NavBar = observer(() => {
+  const { user } = useContext(Context)
   return (
     <nav className="navbar navbar-light bg-light p-1">
       <Container>
@@ -25,6 +26,7 @@ const NavBar = observer(() => {
         </ul>
 
         <ul className='navbar p-0 m-0'>
+          {user.role === "ADMIN" && <li className='list-group-item  p-0 m-0 me-4'><NavLink to="/admin"><ProfileIcon width={32} height={32} fill={"black"} /></NavLink></li>}
           <li className='list-group-item  p-0 m-0 me-4'><NavLink to="/wishlist"><WishListIcon width={32} height={32} fill={"black"} /></NavLink></li>
           <li className='list-group-item  p-0 m-0 me-4'><NavLink to="/cart"><CartIcon width={32} height={32} fill={"black"} /></NavLink></li>
           <li className='list-group-item  p-0 m-0 me-5'> <NavLink to="/profile"><ProfileIcon width={32} height={32} fill={"black"} /></NavLink></li>

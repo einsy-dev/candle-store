@@ -2,7 +2,7 @@ import IsLoading from '../components/shop/IsLoading';
 import { useEffect, useState, useContext } from 'react';
 import Pagination from '../components/shop/Pagination';
 import { observer } from 'mobx-react-lite';
-import { getAllCards } from '../http/cardAPI';
+import { getAllCards, getCategory } from '../http/shopAPI';
 import { Context } from './../main';
 import { NavLink } from 'react-router-dom';
 
@@ -13,6 +13,7 @@ const Shop = observer(() => {
 
   useEffect(() => {
     getAllCards(store.filter, store.page).then(data => store.items(data)).finally(() => setLoading(false)).catch(err => console.log(err));
+    getCategory().then(data => store.category = data).catch(err => console.log(err))
   }, [store, store.page])
 
   return (

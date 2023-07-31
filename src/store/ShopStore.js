@@ -4,7 +4,7 @@ export default class ShopStore {
     constructor() {
         this._filter = 'All';
         this._page = 1;
-        this._limitPage = 5;
+        this._limitPage = 1;
         this._category = [];
         this._items = [];
         makeAutoObservable(this);

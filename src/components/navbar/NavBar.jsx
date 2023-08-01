@@ -17,12 +17,10 @@ const NavBar = observer(() => {
     <nav className="navbar navbar-light bg-light p-1">
       <Container className=''>
 
-        <NavLink to="/" className="navbar-brand">Home</NavLink>
-
         <Menu />
 
         <div className="d-block d-sm-none m-0 m-auto"></div> {/* Затычка */}
- 
+
         <ul className="d-none d-sm-flex list-unstyled m-0 m-auto">
           <li className="me-4"><a target='_blank' href='https://t.me/Ellina_psiholog' rel="noreferrer"><TelegramIcon width={40} height={40} /></a></li>
           <li><a target='_blank' href='https://pin.it/6wf4CY4' rel="noreferrer"><PinterestIcon width={40} height={40} /></a></li>

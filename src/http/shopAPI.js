@@ -1,14 +1,15 @@
 import { $host, $authHost } from '.';
 
-export const getAllCards = async (filter, page) => {
-    const { data } = await $host.get('/items', {
-        params: { filter, page }
+export const getAllCards = async (category, page) => {
+    const { data } = await $host.get('/store', {
+        params: { category, page },
+        timeout: 5000
     })
     return data
 }
 
 export const getOneCard = async (id) => {
-    const { data } = await $host.get('/item/' + id)
+    const { data } = await $host.get('/store/' + id)
     return data
 }
 

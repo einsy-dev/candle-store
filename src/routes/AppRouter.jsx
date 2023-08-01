@@ -10,11 +10,10 @@ const AppRouter = observer(() => {
     return (
         <Container className="d-flex flex-wrap justify-content-center" style={{ "minHeight": "85vh" }}>
             <Routes>
-                <Route path="/" element={<Shop />} />
-                <Route path="/:category" element={<Shop />} />
-                <Route path="/item/:id" element={<ShopItem />} />
+                <Route path="/store" element={<Shop />} />
+                <Route path="/store/:id" element={<ShopItem />} />
                 <Route path="/wishlist" element={<WishList />} />
-                <Route path='/cart' element={<Cart />} />
+                <Route path="/cart" element={<Cart />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </Container>

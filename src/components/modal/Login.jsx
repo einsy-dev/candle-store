@@ -1,13 +1,14 @@
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import { loginUser } from "../../http/userAPI";
-import { Context } from "../../main";
+import { observer } from 'mobx-react-lite';
 
-export default function Login({ changeState }) {
+const Login = observer(({ changeState }) => {
     const formRef = useRef()
-    const { user } = useContext(Context)
     function handleClick(e) {
         e.preventDefault();
-        loginUser(formRef.current.elements[0].value, formRef.current.elements[1].value).then(data => localStorage.setItem('token', data.token)).finally(() => user.isAuth = true).catch(err => console.log(err))
+        loginUser(formRef.current.elements[0].value, formRef.current.elements[1].value)
+            .then(data => localStorage.setItem('token', data.token)).finally(() => location.reload())
+            .catch(err => console.log(err))
     }
     return (
         <form ref={formRef}>
@@ -20,10 +21,12 @@ export default function Login({ changeState }) {
                 <input type="password" required={true} className="form-control" id="exampleInputPassword1" />
             </div>
 
-            <div className="modal-footer">
-                <button onClick={() => changeState('register')} className="btn btn-light me-4">Register</button>
+            <div>
                 <button onClick={handleClick} className="btn btn-primary">Submit</button>
+                <button onClick={() => changeState('register')} className="btn btn-light ms-4">Register</button>
             </div>
         </form>
     )
-}
+})
+
+export default Login

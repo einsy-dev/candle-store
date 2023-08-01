@@ -7,14 +7,10 @@ export const authUser = async () => {
 }
 
 export const loginUser = async (email, password) => {
-    const { data } = await $host.get('/user/login', {
-        params: { email, password }
-    })
+    const { data } = await $host.post('/user/login', { email, password })
     return data
 }
 export const registerUser = async (name, email, password) => {
-    const { data } = await $host.post('/user/register', {
-        params: { name, email, password }
-    })
+    const { data } = await $host.post('/user/register', { name, email, password })
     return data
 }

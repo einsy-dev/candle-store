@@ -24,12 +24,12 @@ export default function Carousel({ images }) {
                             data-bs-interval={index === 0 ? "10000" : "2000"}
                             key={index}
                         >
-                            <img src={image} className=" d-block w-100" alt={`Slide ${index + 1}`} />
+                            <img src={import.meta.env.VITE_REACT_APP_URL_API + '/images/' + image} className=" d-block w-100" alt={`Slide ${index + 1}`} />
                         </div>
                     ))}
                 </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev"></button>
 
+                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev"></button>
                 <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next"></button>
             </div>
         </Container>

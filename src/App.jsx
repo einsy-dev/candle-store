@@ -14,11 +14,13 @@ import { getCategory } from './http/shopAPI';
 export default function App() {
     const { user, store } = useContext(Context)
     useEffect(() => {
-        authUser().then(data => {
-            user.isAuth = true
-            user.role = data.role
-            user.info = data;
-        }).catch(err => console.log(err))
+        if (localStorage.getItem('token')) {
+            authUser().then(data => {
+                user.isAuth = true;
+                user.role = data.role;
+                user.info = data;
+            }).catch(err => console.log(err))
+        }
         getCategory().then(data => store.category = data).catch(err => console.log(err))
     }, [user, store])
 

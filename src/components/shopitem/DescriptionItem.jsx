@@ -15,7 +15,7 @@ export default function DescriptionItem({ title, price, description, specs }) {
           </button>
           <div id="collapseOne" className="collapse show" data-parent="#accordion">
             <div className="card-body">
-              {description}
+              {description} + {price}
             </div>
           </div>
         </div>

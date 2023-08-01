@@ -6,7 +6,6 @@ export default class ShopStore {
         this._page = 1;
         this._limitPage = 1;
         this._category = [];
-        this._items = [];
         makeAutoObservable(this);
     }
 
@@ -34,10 +33,5 @@ export default class ShopStore {
     set category(value) {
         this._category = value;
     }
-    get items() {
-        return this._items;
-    }
-    set items(value) {
-        this._items = value;
-    }
+   
 }

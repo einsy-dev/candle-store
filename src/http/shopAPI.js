@@ -2,8 +2,7 @@ import { $host, $authHost } from '.';
 
 export const getAllCards = async (category, page) => {
     const { data } = await $host.get('/store', {
-        params: { category, page },
-        timeout: 5000
+        params: { category, page }
     })
     return data
 }
@@ -24,6 +23,6 @@ export const createCategory = async (value) => {
 }
 
 export const createStoreItem = async (form) => {
-    const { data } = await $authHost.postForm('/items/create', form)
+    const { data } = await $authHost.postForm('/store/create', form)
     return data
 }

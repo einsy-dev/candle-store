@@ -5,7 +5,7 @@ export default function Carousel({ images }) {
         <Container className="p-0">
             <div id="carouselExampleDark" className="carousel carousel-dark slide">
                 <div className="carousel-indicators">
-                    {images.map((image, index) => (
+                    {images.map((_, index) => (
                         <button
                             type="button"
                             data-bs-target="#carouselExampleDark"

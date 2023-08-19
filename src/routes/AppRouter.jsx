@@ -2,23 +2,28 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { Container } from 'react-bootstrap';
 import Shop from '../pages/Shop';
 import ShopItem from '../pages/ShopItem';
-import Cart from '../pages/Cart';
 import WishList from './../pages/WishList';
-import { observer } from 'mobx-react-lite';
+import LogReg from '../pages/LogReg';
+import Admin from '../pages/Admin';
+import Basket from '../pages/Basket';
 
-const AppRouter = observer(() => {
+
+
+const AppRouter = () => {
     return (
         <Container className="d-flex flex-wrap justify-content-center" style={{ "minHeight": "85vh" }}>
             <Routes>
-                <Route path="/store" element={<Shop />} />
-                <Route path="/store/:id" element={<ShopItem />} />
+                <Route path="/" element={<Navigate to="/All" />} />
+                <Route path="/:category" element={<Shop />} />
+                <Route path="/:category/:id" element={<ShopItem />} />
                 <Route path="/wishlist" element={<WishList />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="*" element={<Navigate to="/" />} />
+                <Route path="/basket" element={<Basket />} />
+                <Route path='/login?/register?' element={<LogReg />} />
+                <Route path='/admin' element={<Admin />} />
+                <Route path="*" element={<Navigate to="/All" />} />
             </Routes>
         </Container>
     );
 }
-)
 
 export default AppRouter

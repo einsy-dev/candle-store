@@ -4,43 +4,29 @@ import Pagination from '../components/shop/Pagination';
 import { observer } from 'mobx-react-lite';
 import { getAllCards } from '../http/shopAPI';
 import { Context } from './../main';
-import { NavLink } from 'react-router-dom';
+import Card from '../components/shop/Card';
+import { useParams } from 'react-router';
 
 
 const Shop = observer(() => {
   const [data, setData] = useState();
   const { store } = useContext(Context);
   const [isLoading, setLoading] = useState(true);
+  const { category } = useParams()
+
 
   useEffect(() => {
     setLoading(true);
-    getAllCards(store.filter, store.page).then(({ data, limitPage }) => { setData(data), store.limitPage = limitPage }).finally(() => setLoading(false)).catch(err => console.log(err));
-  }, [store.page, store])
+    getAllCards(category, store.page).then(({ data, limitPage }) => { setData(data), store.limitPage = limitPage }).finally(() => setLoading(false)).catch(err => console.log(err));
+  }, [store.page, store, category])
+
 
   return (
     <>
       {isLoading ? <IsLoading className="m-auto" /> :
         <>
-          {data.map((el, id) => (
-
-            <div className="card m-3 " key={id} style={{ width: "18rem", height: "fit-content" }}>
-              <img src={import.meta.env.VITE_REACT_APP_URL_API + '/images/' + el.images} className="card-img-top ratio ratio-16x9" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">{el.title}</h5>
-                <p className="card-text">
-                  {el.description}
-                </p>
-
-                <NavLink to={`/item/${el.id}`}>Перейти на страницу товара</NavLink>
-
-              </div>
-
-            </div>
-
-          ))}
-
+          {data?.map((el, id) => <Card item={el} key={id} />)}
           <Pagination limitPage={store.limitPage} activePage={store.page} />
-
         </>
       }
     </>

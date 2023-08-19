@@ -1,17 +1,20 @@
 import { createContext } from 'react';
+import { HashRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import UserStore from './store/UserStore';
-import ShopStore from './store/ShopStore';
+import User from './store/User';
+import Store from './store/Store';
 
 export const Context = createContext(null)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Context.Provider value={{
-    user: new UserStore(),
-    store: new ShopStore(),
+    user: new User(),
+    store: new Store(),
   }}>
-    <App />
+    <HashRouter>
+      <App />
+    </HashRouter>
   </Context.Provider>
 );

@@ -51,8 +51,8 @@ const Card = observer(({ item }) => {
                 </div>
             </NavLink>
 
-            <div className="d-flex w-100 justify-content-center align-items-center mb-3">
-                <div className="btn btn-light border fs-5">{'₽ ' + item.price}</div>
+            <div className="d-flex w-100 justify-content-center align-items-center mb-3 px-3">
+                <div className="bg-light border rounded fs-5 px-3 py-1 me-auto">{item.price} ₽</div>
                 <WishListIcon width={30} height={30} fill={inwishlist ? 'red' : 'black'} onClick={() => addToWishlist(item._id)} style={{ cursor: 'pointer' }} className="mx-4" />
                 <CartIcon width={30} height={30} fill={inbasket ? 'red' : 'black'} onClick={() => addToBasket(item._id)} style={{ cursor: 'pointer' }} />
             </div>

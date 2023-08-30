@@ -33,7 +33,7 @@ const NavBar = observer(() => {
           </li>
 
           <li className='list-group-item  p-0 m-0' style={{ cursor: 'pointer' }}>
-            <NavLink to={'/login'}><ProfileIcon width={32} height={32} fill={"black"} /></NavLink>
+            <NavLink to={user.isAuth ? '/profile' : '/login'}><ProfileIcon width={32} height={32} fill={"black"} /></NavLink>
           </li>
         </ul>
 

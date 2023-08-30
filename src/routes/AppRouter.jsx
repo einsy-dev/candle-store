@@ -6,6 +6,7 @@ import WishList from './../pages/WishList';
 import LogReg from '../pages/LogReg';
 import Admin from '../pages/Admin';
 import Basket from '../pages/Basket';
+import Profile from '../pages/Profile';
 
 
 
@@ -20,6 +21,7 @@ const AppRouter = () => {
                 <Route path="/basket" element={<Basket />} />
                 <Route path='/login?/register?' element={<LogReg />} />
                 <Route path='/admin' element={<Admin />} />
+                <Route path='profile' element={<Profile />} />
                 <Route path="*" element={<Navigate to="/All" />} />
             </Routes>
         </Container>

@@ -7,14 +7,13 @@ import { ReactComponent as EyeIcon } from '../../images/eye.svg'
 const Register = observer(() => {
 
     const formRef = useRef()
-    const [status, setStatus] = useState('')
     const [showPass, setShowPass] = useState('password')
 
     function submitForm(e) {
         e.preventDefault();
         registerUser(formRef.current.elements[0].value, formRef.current.elements[1].value, formRef.current.elements[2].value)
             .then(data => localStorage.setItem('token', data.token))
-            .then(data => setStatus(data.message))
+            .finally(() => location.reload())
             .catch(err => console.log(err))
     }
 
@@ -40,7 +39,6 @@ const Register = observer(() => {
                     <input type={showPass} required={true} id="loginPassword" className="form-control" />
                     <button onClick={handleClick} className="input-group-text bg-white"><EyeIcon /></button>
                 </div>
-                <div className="mt-2">{status}</div>
             </div>
 
             <div className="d-flex align-items-center">

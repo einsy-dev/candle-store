@@ -8,7 +8,7 @@ import { Context } from './../../main';
 export default function DescriptionItem({ id, title, price, description, specs }) {
   const { user } = useContext(Context)
   const [inwishlist, setInwishlist] = useState(user.isAuth && user.wishlist.includes(id))
-  const [inbasket, setInbasket] = useState(user.isAuth && user.basket.includes(id))
+  const [inbasket, setInbasket] = useState(user.isAuth && id in user.basket)
 
   function addToWishlist(id) {
     if (user.wishlist.includes(id)) {

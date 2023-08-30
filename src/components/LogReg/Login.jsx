@@ -13,6 +13,7 @@ const Login = observer(() => {
         e.preventDefault();
         loginUser(formRef.current.elements[0].value, formRef.current.elements[1].value)
             .then(data => localStorage.setItem('token', data.token))
+            .finally(() => location.reload())
             .catch(err => console.log(err))
     }
 
